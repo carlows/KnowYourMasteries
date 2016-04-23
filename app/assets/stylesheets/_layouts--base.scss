@@ -1,0 +1,27 @@
+$color--app-background: $close-to-white;
+
+html, body {
+  height: 100%;
+  background-color: $color--app-background;
+}
+
+.application-container {
+  height: 100%;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
+.no-padding-right {
+  padding-right: 0;
+}
+
+.monospace-font {
+  font-family: $secondary-font;
+}

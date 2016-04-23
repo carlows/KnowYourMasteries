@@ -1,0 +1,31 @@
+// -----------------------------------------------------------------------------
+// This is a map with all the z-index values
+// If you have a value, please put in here in order.
+//
+// Recomendations:
+//   1. Try to use values apart and do not exceed this value
+//   2. Use the list and position elements accordingly
+//   3. Create as many lists as you need, each of which would be considered one
+//      context.
+// -----------------------------------------------------------------------------
+
+$index-list: bootstrap-class,
+             low-level-element,
+             modal-overlay,
+             modal,
+             bootstrap-close-button; // [1]
+
+// -----------------------------------------------------------------------------
+// z-index and error reporting
+// -----------------------------------------------------------------------------
+@function z($element, $list: $index-list) {
+
+  $z-index: index($list, $element);
+
+  @if $z-index {
+    @return $z-index;
+  }
+
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+  @return null;
+}

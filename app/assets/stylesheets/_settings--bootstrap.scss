@@ -1,0 +1,43 @@
+/*!
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Add into this file the variables that are going
+ * to be used by Bootstrap to delivery its grid and
+ * overall styles. A complete list of variables
+ * can be found at: (http://getbootstrap.com/customize/#less-variables)
+ */
+
+// Colors
+
+$brand-primary:                   $color--base;
+$brand-secondary:                 $color--accent;
+
+// Scaffolding
+
+$body-bg-transparent:             false;
+
+$body-bg:                         null;
+$text-color:                      $black;
+$link-color:                      $brand-primary;
+$link-hover-color:                null;
+$link-hover-decoration:           none;
+
+// Grid system
+
+$grid-gutter-width:               30px;
+$grid-gutter-width-half:          $grid-gutter-width/2;
+
+// Components
+
+$border-radius-base:              2px;
+$border-radius-small:             2px;
+$border-radius-large:             4px;
+
+$padding-base-vertical:           9px;
+
+// Buttons
+
+$btn-primary-border:              $brand-primary;
+
+// Forms
+
+$input-border-focus:              null;

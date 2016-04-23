@@ -1,0 +1,46 @@
+// -----------------------------------------------------------------------------
+// $COLOR-VARIABLES
+// -----------------------------------------------------------------------------
+
+$black:                   #333333;
+$blue:                    #1194F6;
+$dark-blue:               #1086E8;
+$gray:                    #CCC;
+$green-dark:              darken(#00B500, 10%);
+$green:                   #00B500;
+$lime-dark:               darken(#85C92A, 10%);
+$lime:                    #85C92A;
+$orange-dark:             darken(#FF5800, 10%);
+$orange:                  #FF5800;
+$pink-dark:               darken(#EE1261, 10%);
+$pink:                    #EE1261;
+$red-dark:                darken(#F7412D, 10%);
+$red:                     #F7412D;
+$ultramarine-dark:        darken(#4D67F4, 10%);
+$ultramarine:             #4D67F4;
+$violet-dark:             darken(#A100B7, 10%);
+$violet:                  #A100B7;
+$white:                   #FFF;
+$yellow-dark:             darken(#FFC600, 10%);
+$yellow:                  #FFC600;
+$moody-blue:              #737ec8;
+$chetwode-blue:           #6570C2;
+$darker-chetwode-blue:    darken($chetwode-blue, 10%);
+$caribbean-green:         #00CD84;
+$pomegranate:             #F44336;
+$fruit-salad:             #4CAF50;
+$stack:                   #8D8D8D;
+$close-to-white:          #EEEEEE;
+$darker-gray:             #999;
+$red-orange:              #FD462B;
+$transparent-black:       rgba(0, 0, 0, 0.5);
+
+
+// -----------------------------------------------------------------------------
+// $USABLE-COLORS
+// -----------------------------------------------------------------------------
+
+$color--base:             $blue;
+$color--accent:           $violet;
+$color--error:            $red;
+$color--sucess:           $lime;

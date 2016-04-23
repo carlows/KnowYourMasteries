@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  port: 5432
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: LeagueTeam_development
+
+test:
+  <<: *default
+  database: LeagueTeam_test
+
+production:
+  <<: *default
+  database: LeagueTeam_production
