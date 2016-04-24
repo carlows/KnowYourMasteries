@@ -11,9 +11,12 @@
 // fonts-families
 // -----------------------------------------------------------------------------
 
-  $primary-font:                'Montserrat', 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+
+  $primary-font:                'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   $secondary-font:              'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   $headings-font-family:        $secondary-font;
 
   $font-family-sans-serif:      $primary-font;

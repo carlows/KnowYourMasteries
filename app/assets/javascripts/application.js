@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap-sprockets
+//= require bootstrap-material-design
+//= require jquery-material-form.min
 //= require react
 //= require react_ujs
 //= require components

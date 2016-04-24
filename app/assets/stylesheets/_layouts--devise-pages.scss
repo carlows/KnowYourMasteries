@@ -1,0 +1,35 @@
+$color--container:              $white;
+$color--container-header:       $primary-color;
+$color--container-header-text:  $primary-color-text;
+
+.devise-pages-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.devise-pages-box-container {
+  width: 40%;
+  background-color: $color--container;
+  @include material-layer(2);
+
+  .devise-pages-box-header {
+    background-color: $color--container-header;
+    color: $color--container-header-text;
+    padding: ($pad * 10) ($pad * 4) ($pad * 2) ($pad * 6);
+
+    h1 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .devise-pages-box-content {
+    padding: $pad-triple ($pad * 6) ($pad * 6) ($pad * 6);
+
+    .link {
+      padding-top: $pad-and-half;
+    }
+  }
+}

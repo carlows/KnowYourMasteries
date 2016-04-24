@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
-
-  root 'team#index'
+  root 'team#show'
 
   resource :team, only: [:show, :new, :create, :edit, :update]
 end

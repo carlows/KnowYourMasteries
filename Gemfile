@@ -14,8 +14,10 @@ gem 'react-rails'
 gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'airbrake', '4.1.0'
-gem 'devise'
-gem 'devise_invitable'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap-material-design'
+end
 
 group :development do
   gem 'dotenv-rails'

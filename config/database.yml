@@ -6,12 +6,12 @@ default: &default
 
 development:
   <<: *default
-  database: LeagueTeam_development
+  database: MainYourMom_development
 
 test:
   <<: *default
-  database: LeagueTeam_test
+  database: MainYourMom_test
 
 production:
   <<: *default
-  database: LeagueTeam_production
+  database: MainYourMom_production

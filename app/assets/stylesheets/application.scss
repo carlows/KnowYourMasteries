@@ -8,6 +8,7 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'settings--defaults.scss';
+@import 'bootstrap-material-design.scss';
 
 /**
  * Tools
@@ -21,16 +22,19 @@
 /**
  * Objects
  */
-
+ 
 /**
  * Components
  */
+
+@import 'jquery-material-form.min.css';
 
 /**
  * Layouts
  */
 
 @import 'layouts--base.scss';
+@import 'layouts--devise-pages.scss';
 
 /**
  * Partials
