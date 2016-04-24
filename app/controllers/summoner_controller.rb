@@ -1,0 +1,2 @@
+class SummonerController < ApplicationController
+end

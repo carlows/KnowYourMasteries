@@ -11,8 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423230711) do
+ActiveRecord::Schema.define(version: 20160424193947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "summoners", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "summoner_id"
+    t.integer  "logo_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
 end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'team#show'
+  resources :summoners, only: [:index, :show, :update, :create]
+  resource :stats, only: :show
 
-  resource :team, only: [:show, :new, :create, :edit, :update]
+  get 'search/:query', to: 'summoner#search', as: 'search'
+
+  root 'summoner#search'
 end
