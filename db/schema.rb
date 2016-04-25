@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424193947) do
+ActiveRecord::Schema.define(version: 20160425065822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "champion_masteries", force: :cascade do |t|
+    t.integer  "summoner_id"
+    t.integer  "champion_id"
+    t.integer  "champion_points"
+    t.boolean  "chest_granted"
+    t.string   "highest_grade"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "champions", force: :cascade do |t|
+    t.integer  "champion_id"
+    t.string   "name"
+    t.string   "key"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "summoners", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160424193947) do
     t.integer  "logo_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "region"
   end
 
 end

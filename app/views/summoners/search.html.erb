@@ -1,0 +1,30 @@
+<div class="search-page">
+  <div class="search-container">
+    <div class="title text-center">
+      <h1>Know your Masteries</h1>
+    </div>
+
+    <div class="search-input-control text-center">
+      <%= form_tag summoners_path, method: "post" do |f| %>
+        <input type="text" name="summoner" class="search-input" placeholder="Summoner name" />
+          <select name="region" class="search-select">
+            <option value="BR">BR</option>
+            <option value="EUNE">EUNE</option>
+            <option value="EUW">EUW</option>
+            <option value="JP">JP</option>
+            <option value="KR">KR</option>
+            <option value="LAN">LAN</option>
+            <option value="LAS">LAS</option>
+            <option value="NA">NA</option>
+            <option value="OCE">OCE</option>
+            <option value="TR">TR</option>
+            <option value="RU">RU</option>
+            <option value="PBE">PBE</option>
+          </select>
+          <button type="submit" class="btn btn-raised btn-primary search-btn">Search</button>
+      <% end %>
+    </div>
+
+    
+  </div>  
+</div>

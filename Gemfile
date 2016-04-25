@@ -14,6 +14,7 @@ gem 'react-rails'
 gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'airbrake', '4.1.0'
+gem 'rest-client'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-material-design'

@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'riot_api_requests'
+
+api = RiotApiRequests.new
+
+champion_data = api.request_champion_data
+
+champion_data["data"].values.each do |champ|
+  Champion.create(champion_id: champ["id"], name: champ["name"], key: champ["key"])
+end

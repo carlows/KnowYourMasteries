@@ -179,6 +179,8 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -275,6 +277,7 @@ DEPENDENCIES
   rails_serve_static_assets
   rails_stdout_logging
   react-rails
+  rest-client
   rspec-mocks
   rspec-rails
   sass-rails
