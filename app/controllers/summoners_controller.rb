@@ -9,9 +9,9 @@ class SummonersController < ApplicationController
   end
 
   def create
-    Summoner.create_summoner(params[:summoner], params[:region])
+    sum = Summoner.create_summoner(params[:summoner], params[:region])
 
-    redirect_to summoner_path(summoner.id)
+    redirect_to summoner_path(sum.id)
   end
 
   def update

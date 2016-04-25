@@ -13,9 +13,9 @@ class Summoner < ActiveRecord::Base
     champions = Champion.all
 
     summoner_data = api.request_summoner_data(name, region).first.last
-    
-    summoner = Summoner.new(name: summoner_data["name"], 
-                            region: region, 
+
+    summoner = Summoner.new(name: summoner_data["name"],
+                            region: region,
                             summoner_id: summoner_data["id"],
                             logo_id: summoner_data["profileIconId"])
 
@@ -26,11 +26,12 @@ class Summoner < ActiveRecord::Base
       champion_mastery = ChampionMastery.new(champion_points: mastery["championPoints"], chest_granted: mastery["chestGranted"])
 
       champion_mastery.highest_grade = mastery["highestGrade"] if mastery.has_key?("highestGrade")
-      champion_mastery.champion = champions.find_by(champion_id: mastery["championId"])
+      champion_mastery.champion_id = mastery["championId"]
 
       summoner.champion_masteries << champion_mastery
     end
 
     summoner.save
+    summoner
   end
 end
