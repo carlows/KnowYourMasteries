@@ -15,19 +15,30 @@ class Summoner < ActiveRecord::Base
     summoner.logo_id = summoner_data["profileIconId"]
     summoner.champion_masteries.delete_all
 
+    summoner.save(:validate => false)
+
     mastery_data = api.request_mastery_data(summoner.summoner_id, summoner.region)
-    summoner.champion_masteries = []
 
+    inserts = []
     mastery_data.each do |mastery|
-      champion_mastery = ChampionMastery.new(champion_points: mastery["championPoints"], chest_granted: mastery["chestGranted"])
+      if mastery.has_key?("highestGrade")
+        grade = mastery["highestGrade"]
+      else
+        grade = "n"
+      end 
 
-      champion_mastery.highest_grade = mastery["highestGrade"] if mastery.has_key?("highestGrade")
-      champion_mastery.champion_id = mastery["championId"]
+      chest_granted = mastery["chestGranted"] ? 't' : 'f'
+      champion_points = mastery["championPoints"]
+      chest_granted = mastery["chestGranted"]
+      champion_id = mastery["championId"]
 
-      summoner.champion_masteries << champion_mastery
+      inserts.push "(#{champion_points}, 'f', '#{grade}', #{champion_id}, #{summoner.id}, '#{Time.current.to_s}', '#{Time.current.to_s}')"
     end
 
-    summoner.save(:validate => false)
+    sql = "INSERT INTO champion_masteries (champion_points, chest_granted, highest_grade, champion_id, summoner_id, created_at, updated_at) VALUES #{inserts.join(", ")};"
+
+    ChampionMastery.connection.execute sql
+
     summoner
   end
 
@@ -42,18 +53,28 @@ class Summoner < ActiveRecord::Base
                             logo_id: summoner_data["profileIconId"])
 
     mastery_data = api.request_mastery_data(summoner.summoner_id, region)
-    summoner.champion_masteries = []
+    
+    summoner.save(:validate => false)
 
+    inserts = []
     mastery_data.each do |mastery|
-      champion_mastery = ChampionMastery.new(champion_points: mastery["championPoints"], chest_granted: mastery["chestGranted"])
+      if mastery.has_key?("highestGrade")
+        grade = mastery["highestGrade"]
+      else
+        grade = "n"
+      end 
 
-      champion_mastery.highest_grade = mastery["highestGrade"] if mastery.has_key?("highestGrade")
-      champion_mastery.champion_id = mastery["championId"]
+      chest_granted = mastery["chestGranted"] ? 't' : 'f'
+      champion_points = mastery["championPoints"]
+      chest_granted = mastery["chestGranted"]
+      champion_id = mastery["championId"]
 
-      summoner.champion_masteries << champion_mastery
+      inserts.push "(#{champion_points}, 'f', '#{grade}', #{champion_id}, #{summoner.id}, '#{Time.current.to_s}', '#{Time.current.to_s}')"
     end
 
-    summoner.save(:validate => false)
+    sql = "INSERT INTO champion_masteries (champion_points, chest_granted, highest_grade, champion_id, summoner_id, created_at, updated_at) VALUES #{inserts.join(", ")};"
+
+    ChampionMastery.connection.execute sql
     summoner
   end
 end
