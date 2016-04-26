@@ -1,0 +1,28 @@
+$size--big-title-font:    1000%;
+
+.not-found-page {
+  position: relative;
+  
+  .big-title {
+    h1 {
+      font-size: $size--big-title-font;
+      font-weight: 100;
+      text-align: center;
+      margin: 0;
+      margin-bottom: $space * 5;
+    }
+  }
+
+  .sub-title {
+    h1 {
+      font-weight: 100;
+      margin: 0;
+    }
+  }
+}
+
+.not-found-image {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+}

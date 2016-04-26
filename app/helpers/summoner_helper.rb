@@ -1,0 +1,2 @@
+module SummonerHelper
+end

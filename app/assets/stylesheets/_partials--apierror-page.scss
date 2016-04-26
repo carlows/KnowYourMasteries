@@ -1,0 +1,28 @@
+$size--big-title-font:    1000%;
+
+.apierror-page {
+  position: relative;
+  
+  .big-title {
+    h1 {
+      font-size: $size--big-title-font;
+      font-weight: 100;
+      text-align: center;
+      margin: 0;
+      margin-bottom: $space * 5;
+    }
+  }
+
+  .sub-title {
+    h1 {
+      font-weight: 100;
+      margin: 0;
+    }
+  }
+}
+
+.error-image {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
