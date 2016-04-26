@@ -8,9 +8,31 @@ class Summoner < ActiveRecord::Base
   validates :region, presence: true
   validates :logo_id, presence: true
 
+  def self.update_summoner(summoner)
+    api = RiotApiRequests.new
+
+    summoner_data = api.request_summoner_data(name, summoner.region).first.last
+    summoner.logo_id = summoner_data["profileIconId"]
+    summoner.champion_masteries.delete_all
+
+    mastery_data = api.request_mastery_data(summoner.summoner_id, summoner.region)
+    summoner.champion_masteries = []
+
+    mastery_data.each do |mastery|
+      champion_mastery = ChampionMastery.new(champion_points: mastery["championPoints"], chest_granted: mastery["chestGranted"])
+
+      champion_mastery.highest_grade = mastery["highestGrade"] if mastery.has_key?("highestGrade")
+      champion_mastery.champion_id = mastery["championId"]
+
+      summoner.champion_masteries << champion_mastery
+    end
+
+    summoner.save(:validate => false)
+    summoner
+  end
+
   def self.create_summoner(name, region)
     api = RiotApiRequests.new
-    champions = Champion.all
 
     summoner_data = api.request_summoner_data(name, region).first.last
 
@@ -31,7 +53,7 @@ class Summoner < ActiveRecord::Base
       summoner.champion_masteries << champion_mastery
     end
 
-    summoner.save
+    summoner.save(:validate => false)
     summoner
   end
 end

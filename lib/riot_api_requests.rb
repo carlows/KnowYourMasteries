@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'json'
+require 'riot_exceptions'
 
 class RiotApiRequests
 
@@ -11,11 +12,11 @@ class RiotApiRequests
       when 200
         JSON.parse(response)
       when 404
-        raise 'Summoner not found'
+        raise RiotApi::SummonerNotFoundException
       when 429
-        raise 'Rate limit was exceeded'
+        raise RiotApi::RateLimitExceededException
       else
-        raise 'There was a problem getting the data from the server'
+        raise RiotApi::RiotServerErrorException
       end
     end
   end

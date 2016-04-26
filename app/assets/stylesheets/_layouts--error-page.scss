@@ -1,0 +1,51 @@
+$color--background-container:     $white;
+$radius--border-container:        2px;
+$color--background:               $primary-color;
+$color--background-dark:          $primary-color-dark;
+$color--font:                     $primary-color-text;
+$color--inputs-text:              $primary-text-color;
+$size--search-text:               120%;
+$size--header-text:               160%;
+
+.error-page {
+  height: 100%;
+  
+  &-header,
+  &-footer {
+    @include material-layer(2);
+    background-color: $color--background-dark;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding: $pad * 2;
+    box-sizing: border-box;
+
+    h2 {
+      color: $color--font;
+      font-weight: bold;
+      margin: 0;
+      font-size: $size--header-text;
+    }
+
+    p {
+      color: $color--font;
+      font-size: 120%;
+      margin: 0;
+
+      .material-icons {
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+}
+
+.error-container {
+  display: flex;
+  height: 80%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: $color--background;
+  color: $color--font;
+}
