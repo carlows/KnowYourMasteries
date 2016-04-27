@@ -19,6 +19,19 @@ class RiotApiRequests
         raise RiotApi::RiotServerErrorException
       end
     end
+
+    @handle_ranked_response = Proc.new do | response, request, result |
+      case response.code
+      when 200
+        JSON.parse(response)
+      when 404
+        nil
+      when 429
+        raise RiotApi::RateLimitExceededException
+      else
+        raise RiotApi::RiotServerErrorException
+      end
+    end
   end
 
   # url for summoner data:
@@ -26,7 +39,6 @@ class RiotApiRequests
   def request_summoner_data(summoner_name, region)
     api_request_summonerid_url = get_region_url(region) + "summoner/by-name/"
     full_url = api_request_summonerid_url + summoner_name + @api_key
-
     RestClient.get(full_url, &@handle_response) 
   end
 
@@ -36,11 +48,18 @@ class RiotApiRequests
     RestClient.get(api_request_url, &@handle_response)
   end
 
+  def request_champion_ranked_stats_data(summoner_id, region)
+    api_request_url = "https://#{region.downcase}.api.pvp.net/api/lol/#{region.downcase}/v1.3/stats/by-summoner/#{summoner_id}/ranked" + @api_key
+
+    RestClient.get(api_request_url, &@handle_ranked_response)
+  end
+
   def request_champion_data
     api_request_url = "https://global.api.pvp.net/api/lol/static-data/lan/v1.2/champion" + @api_key
 
     RestClient.get(api_request_url, &@handle_response) 
   end
+
 
   private 
 

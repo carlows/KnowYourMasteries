@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426030814) do
+ActiveRecord::Schema.define(version: 20160427075214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,22 @@ ActiveRecord::Schema.define(version: 20160426030814) do
 
   add_index "champion_masteries", ["champion_id"], name: "index_champion_masteries_on_champion_id", using: :btree
   add_index "champion_masteries", ["summoner_id"], name: "index_champion_masteries_on_summoner_id", using: :btree
+
+  create_table "champion_stats", force: :cascade do |t|
+    t.integer  "champion_id"
+    t.integer  "summoner_id"
+    t.integer  "matches_played"
+    t.integer  "matches_won"
+    t.integer  "matches_lost"
+    t.integer  "kills"
+    t.integer  "assists"
+    t.integer  "deaths"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "champion_stats", ["champion_id"], name: "index_champion_stats_on_champion_id", using: :btree
+  add_index "champion_stats", ["summoner_id"], name: "index_champion_stats_on_summoner_id", using: :btree
 
   create_table "champions", force: :cascade do |t|
     t.integer  "champion_id"
