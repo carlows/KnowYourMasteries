@@ -1,4 +1,6 @@
 class SummonersController < ApplicationController
+  layout 'application_user', only: [:index, :show]
+
   def search
   end
 
