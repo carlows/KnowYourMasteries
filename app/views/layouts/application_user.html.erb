@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LeagueTeam</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+
+<div class="application">
+  <header class="application-navbar"></header>
+  <div class="application-header">
+  </div>
+
+  <div class="application-content">
+    <%= yield %>
+  </div>
+
+  <div class="application-footer">
+    <p>Made with <i class="material-icons md-18 md-red">favorite</i> by <span>CodeLovers</span></p>
+  </div>
+</div>
+
+</body>
+</html>
