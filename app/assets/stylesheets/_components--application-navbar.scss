@@ -1,0 +1,16 @@
+$size--navbar:               50px;
+$color--layout-dark:         $primary-color-dark;
+
+.application-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: $size--navbar;
+  background-color: $color--layout-dark;
+
+  .title {
+    color: $primary-color-text;
+  }
+}
