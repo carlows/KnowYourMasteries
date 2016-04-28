@@ -1,0 +1,14 @@
+.application {
+  height: 100%;
+
+  &-content {
+    min-height: 60%;
+    margin-bottom: -50px;
+  }
+
+  &-content:after {
+    content: "";
+    display: block;
+    height: 50px;
+  }
+}

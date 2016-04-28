@@ -1,0 +1,11 @@
+$color--background:               $primary-color;
+$size--header-height:             30%;
+
+.application-header {
+  @include material-layer(1);
+
+  width: 100%;
+  height: $size--header-height;
+  background-color: $color--background;
+  margin: 0;
+}

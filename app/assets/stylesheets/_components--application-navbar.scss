@@ -1,16 +1,45 @@
 $size--navbar:               50px;
 $color--layout-dark:         $primary-color-dark;
+$size--title-font:           180%;
+$size--font-navbar:          120%;
 
 .application-navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: $size--navbar;
   background-color: $color--layout-dark;
+  @include material-layer(2);
+  margin: 0;
+  height: 10%;
 
   .title {
     color: $primary-color-text;
+    font-size: $size--title-font;
+    font-weight: bold;
   }
+
+  &-nav {
+    list-style: none;
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    color: $primary-color-text;
+    font-size: $size--font-navbar;
+
+    > li {
+      display: inline;
+      margin: 0 $space-triple;
+      height: 100%;
+    }
+  }
+}
+
+.navbar-container {
+  width: 80%;
+  height: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
