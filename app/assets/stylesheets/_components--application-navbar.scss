@@ -5,7 +5,7 @@ $size--font-navbar:          120%;
 
 .application-navbar {
   background-color: $color--layout-dark;
-  @include material-layer(2);
+  @include material-layer(1);
   margin: 0;
   height: 10%;
 

@@ -3,6 +3,7 @@ $color--background:     $white;
 .app-card {
   @include material-layer(1);
   background-color: $color--background;
+  margin: 0 $pad;
 
   .card-section {
     width: 100%;

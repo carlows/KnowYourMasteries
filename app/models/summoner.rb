@@ -13,6 +13,10 @@ class Summoner < ActiveRecord::Base
     champion_masteries.sum(:champion_level)
   end
 
+  def chests_unlocked
+    champion_masteries.where(chest_granted: true).count
+  end
+
   def self.update_summoner(summoner)
     api = RiotApiRequests.new
 

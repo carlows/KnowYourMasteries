@@ -5,11 +5,19 @@
 <div class="app-card col-md-3 col-without-pad">
   <div class="card-section card-section-centered">
     <%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/#{@summoner.logo_id}.png", size: "100x100", class: "img img-circle" %>
-    
   </div>
   <div class="card-section-full card-section-centered card-section-green">
     <h1><%= @summoner.mastery_score %></h1>
     <label>Mastery Score</label>
   </div>
+</div>
 
+<div class="app-card col-md-3 col-without-pad">
+  <div class="card-section card-section-centered">
+    <%= image_tag "hextech.png", size: "100x100", class: "img img-rounded" %>
+  </div>
+  <div class="card-section-full card-section-centered card-section-green">
+    <h1><%= @summoner.chests_unlocked %></h1>
+    <label>Chests Unlocked</label>
+  </div>
 </div>
