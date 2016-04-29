@@ -31,11 +31,11 @@
       </div>
     </div>
   <div class="application-header">
+    <%= yield :header %>
   </div>
 
-  <div class="application-content">
+  <div class="application-content container">
     <%= yield %>
-    test
   </div>
 
   <div class="application-footer">

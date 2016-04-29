@@ -1,0 +1,38 @@
+$color--background:     $white;
+
+.app-card {
+  @include material-layer(1);
+  background-color: $color--background;
+
+  .card-section {
+    width: 100%;
+    padding: $pad-double $pad;
+
+    h1 {
+      margin: 0;
+    }
+
+    &-centered {
+      text-align: center;
+    }
+
+    &-green {
+      background-color: $accent-color;
+      color: $primary-color-text;
+    }
+  }
+
+  .card-section-full {
+    width: 100%;
+    padding: $pad-triple;
+
+    h1 {
+      margin: 0;
+      font-size: 400%;
+    }
+
+    label {
+      color: $primary-color-text;
+    }
+  }
+}

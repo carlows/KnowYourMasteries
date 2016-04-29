@@ -9,11 +9,15 @@ class Summoner < ActiveRecord::Base
   validates :region, presence: true
   validates :logo_id, presence: true
 
+  def mastery_score
+    champion_masteries.sum(:champion_level)
+  end
+
   def self.update_summoner(summoner)
     api = RiotApiRequests.new
 
     summoner_data = api.request_summoner_data(name, summoner.region).first.last
-    champion_stats_data = api.request_champion_ranked_stats_data(summoner.summoner_id, region)
+    champion_stats_data = api.request_champion_ranked_stats_data(summoner.summoner_id, summoner.region)
 
     summoner.logo_id = summoner_data["profileIconId"]
     summoner.champion_masteries.delete_all
@@ -35,8 +39,9 @@ class Summoner < ActiveRecord::Base
       champion_points = mastery["championPoints"]
       chest_granted = mastery["chestGranted"]
       champion_id = mastery["championId"]
+      champion_level = matery["championLevel"]
 
-      masteries.push "(#{champion_points}, 'f', '#{grade}', #{champion_id}, #{summoner.id}, '#{Time.current.to_s}', '#{Time.current.to_s}')"
+      masteries.push "(#{champion_points}, #{chest_granted}, #{champion_level}, '#{grade}', #{champion_id}, #{summoner.id}, '#{Time.current.to_s}', '#{Time.current.to_s}')"
     end
 
     champions = []
@@ -54,7 +59,7 @@ class Summoner < ActiveRecord::Base
       end
     end
 
-    champion_masteries_query = "INSERT INTO champion_masteries (champion_points, chest_granted, highest_grade, champion_id, summoner_id, created_at, updated_at) VALUES #{masteries.join(", ")};"
+    champion_masteries_query = "INSERT INTO champion_masteries (champion_points, chest_granted, champion_level, highest_grade, champion_id, summoner_id, created_at, updated_at) VALUES #{masteries.join(", ")};"
     champion_stats_query = "INSERT INTO champion_stats (matches_played, matches_won, matches_lost, kills, assists, deaths, champion_id, summoner_id, created_at, updated_at) VALUES #{champions.join(", ")};"
 
     ActiveRecord::Base.transaction do
@@ -91,8 +96,9 @@ class Summoner < ActiveRecord::Base
       champion_points = mastery["championPoints"]
       chest_granted = mastery["chestGranted"]
       champion_id = mastery["championId"]
+      champion_level = mastery["championLevel"]
 
-      masteries.push "(#{champion_points}, 'f', '#{grade}', #{champion_id}, #{summoner.id}, '#{Time.current.to_s}', '#{Time.current.to_s}')"
+      masteries.push "(#{champion_points}, #{chest_granted}, #{champion_level}, '#{grade}', #{champion_id}, #{summoner.id}, '#{Time.current.to_s}', '#{Time.current.to_s}')"
     end
 
     champions = []
@@ -110,7 +116,7 @@ class Summoner < ActiveRecord::Base
       end
     end
 
-    champion_masteries_query = "INSERT INTO champion_masteries (champion_points, chest_granted, highest_grade, champion_id, summoner_id, created_at, updated_at) VALUES #{masteries.join(", ")};"
+    champion_masteries_query = "INSERT INTO champion_masteries (champion_points, chest_granted, champion_level, highest_grade, champion_id, summoner_id, created_at, updated_at) VALUES #{masteries.join(", ")};"
     champion_stats_query = "INSERT INTO champion_stats (matches_played, matches_won, matches_lost, kills, assists, deaths, champion_id, summoner_id, created_at, updated_at) VALUES #{champions.join(", ")};"
 
     ActiveRecord::Base.transaction do

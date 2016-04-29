@@ -8,6 +8,7 @@ class SummonersController < ApplicationController
   end
 
   def show
+    @summoner = Summoner.find(params[:id])
   end
 
   def create
