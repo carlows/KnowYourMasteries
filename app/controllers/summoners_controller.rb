@@ -8,7 +8,7 @@ class SummonersController < ApplicationController
   end
 
   def show
-    @summoner = Summoner.find(params[:id])
+    @summoner = Summoner.includes(:champion_masteries => :champion).find(params[:id])
   end
 
   def create
