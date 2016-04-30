@@ -20,7 +20,7 @@ class Summoner < ActiveRecord::Base
   def self.update_summoner(summoner)
     api = RiotApiRequests.new
 
-    summoner_data = api.request_summoner_data(name, summoner.region).first.last
+    summoner_data = api.request_summoner_data(summoner.name, summoner.region).first.last
     champion_stats_data = api.request_champion_ranked_stats_data(summoner.summoner_id, summoner.region)
 
     summoner.logo_id = summoner_data["profileIconId"]
@@ -43,7 +43,7 @@ class Summoner < ActiveRecord::Base
       champion_points = mastery["championPoints"]
       chest_granted = mastery["chestGranted"]
       champion_id = mastery["championId"]
-      champion_level = matery["championLevel"]
+      champion_level = mastery["championLevel"]
 
       masteries.push "(#{champion_points}, #{chest_granted}, #{champion_level}, '#{grade}', #{champion_id}, #{summoner.id}, '#{Time.current.to_s}', '#{Time.current.to_s}')"
     end
