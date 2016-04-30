@@ -1,5 +1,5 @@
 $color--background:               $primary-color;
-$size--header-height:             30%;
+$size--header-height:             150px;
 
 .application-header {
   @include material-layer(1);
@@ -14,6 +14,8 @@ $size--header-height:             30%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  top: -5px;
 
   h1 {
     margin: 0;

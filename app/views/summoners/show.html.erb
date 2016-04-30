@@ -3,7 +3,30 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-3 col-without-pad">
+  <div class="col-md-6">
+    <div class="app-card app-card-info row">
+      <div class="card-section card-section-centered card-section-info-main col-md-5 col-without-pad">
+        <h1><%= @summoner.mained_champion.champion.name %></h1>
+        <label>Main Champion</label>
+      </div>
+      <div class="card-section-info col-md-7 col-without-pad text-center">
+      <% unless @summoner.mained_champion_stats.nil? %>
+        <p class="stat">Matches Played: <%= @summoner.mained_champion_stats.matches_played %></p>
+        <p class="stat">Winrate: <%= @summoner.mained_champion_stats.winrate %>%</p>
+        <p class="stat">KDA: <%= number_with_precision(@summoner.mained_champion_stats.kda, precision: 2) %></p>
+      <% else %>
+        <p class="stat">Matches Played: 0</p>
+        <p class="stat">Winrate: 0%</p>
+        <p class="stat">KDA: 0.00</p>
+      <% end %>
+        <p>Ranked Stats Season 6</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
     <div class="app-card">
       <div class="card-section card-section-centered">
         <%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/#{@summoner.logo_id}.png", size: "100x100", class: "img img-circle" %>
@@ -25,7 +48,7 @@
     </div>
   </div>
   
-  <div class="col-md-8 col-without-pad">
+  <div class="col-md-9">
     <%= react_component('AppTable', { data: @summoner_materies }) %>
   </div>
 </div>

@@ -1,17 +1,27 @@
 $color--background:     $white;
 
-[class*="col-"] {
-  margin: 0 $space $space-double $space;
-}
-
 .app-card {
   @include material-layer(1);
+  border-radius: 2px;
   background-color: $color--background;
 
-  margin: $space-double 0;
+  margin-bottom: $space-double;
+
+  &-info {
+    color: $primary-color-text;
+    background-color: $primary-color;
+    
+    .card-section-info {
+      padding: $pad-triple;
+
+      .stat {
+        font-size: 140%;
+        font-weight: 500;
+      }
+    }
+  }
 
   .card-section {
-    width: 100%;
     padding: $pad-triple $pad;
 
     h1 {
@@ -22,9 +32,18 @@ $color--background:     $white;
       text-align: center;
     }
 
+    label {
+      font-size: 90%;
+      color: $primary-color-text;
+    }
+
     &-green {
       background-color: $accent-color;
       color: $primary-color-text;
+    }
+
+    &-info-main {
+      padding-top: 70px;
     }
   }
 
