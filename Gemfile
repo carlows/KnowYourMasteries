@@ -15,6 +15,7 @@ gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'airbrake', '4.1.0'
 gem 'rest-client'
+gem 'lodash-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-material-design'

@@ -9,6 +9,7 @@ class SummonersController < ApplicationController
 
   def show
     @summoner = Summoner.includes(:champion_masteries => :champion).find(params[:id])
+    @summoner_materies = @summoner.champion_masteries.as_json(include: :champion)
   end
 
   def create

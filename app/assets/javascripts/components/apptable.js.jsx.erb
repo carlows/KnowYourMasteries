@@ -1,0 +1,92 @@
+class AppTable extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      amount: 0,
+      count: 0
+    }
+
+    this.calculateHighestScore = this.calculateHighestScore.bind(this);
+  }
+
+  componentWillMount() {
+    let data = this.props.data;
+    let initialAmount = 5;
+    let startingItems = _.take(data, initialAmount);
+    this.setState({
+      data: startingItems,
+      amount: data.length,
+      count: initialAmount
+    })
+  }
+
+  showMore() {
+    let { amount, count } = this.state;
+
+    let amountToDisplay = count + 5;
+
+    if(amountToDisplay <= amount) {
+      let itemsToDisplay = _.take(this.props.data, amountToDisplay);
+
+      this.setState({
+        data: itemsToDisplay,
+        count: amountToDisplay 
+      });
+    } else {
+      this.setState({
+        data: this.props.data,
+        count: this.props.data.length
+      });
+    }
+  }
+
+  calculateHighestScore(score) {
+    if(score == 'n') return ' ';
+    else return score;
+  }
+
+  render() {
+    let dataRows = this.state.data.map((item, index) => {
+      let chest = (
+        <img className="img img-rounded" src="<%= asset_path('hextech.png') %>" width="30" height="30" />
+      );
+
+      let chest_thing = item.chest_granted ? chest : "";
+
+      return (
+        <tr key={index}>
+          <td className="text-left champ-name-td"><img src={ "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/" + item.champion.key + ".png" } width="30" height="30" /> <span className="champ-name">{ item.champion.name }</span></td>
+          <td className="champ-name-td"><span className="champ-name">{ item.champion_points }</span></td>
+          <td className="champ-name-td"><span className="champ-name">{ this.calculateHighestScore(item.highest_grade) }</span></td>
+          <td className="champ-name-td"><span className="champ-name">{ chest_thing }</span></td>
+        </tr>
+      )
+    });
+
+    return (
+      <div className="app-card app-card-table">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Champion</th>
+              <th>Champion Points</th>
+              <th>Highest Score</th>
+              <th>Chest Unlocked</th>
+            </tr>
+          </thead>
+          <tbody>
+            { dataRows }
+          </tbody>
+        </table>
+
+        <button className="btn btn-success btn-table" onClick={this.showMore.bind(this)}>Show 5 more</button>
+      </div>
+    );
+  }
+}
+
+AppTable.propTypes = {
+  data: React.PropTypes.array.isRequired
+};

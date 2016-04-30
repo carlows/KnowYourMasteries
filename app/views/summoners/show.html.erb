@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-3 col-without-pad">
-    <div class="app-card col-md-12 col-without-pad">
+    <div class="app-card">
       <div class="card-section card-section-centered">
         <%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/#{@summoner.logo_id}.png", size: "100x100", class: "img img-circle" %>
       </div>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="app-card col-md-12 col-without-pad">
+    <div class="app-card">
       <div class="card-section card-section-centered">
         <%= image_tag "hextech.png", size: "100x100", class: "img img-rounded" %>
       </div>
@@ -25,40 +25,7 @@
     </div>
   </div>
   
-
-  <div class="app-card col-md-8 col-without-pad">
-    <table class="table table-striped table-hover ">
-      <thead>
-      <tr>
-        <th>Champion</th>
-        <th>Champion Points</th>
-        <th>Highest Score</th>
-        <th>Chest Unlocked</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @summoner.champion_masteries.each do |mastery| %>
-      <tr>
-        <td><%= mastery.champion.name %></td>
-        <td><%= mastery.champion_points %></td>
-        <td><%= mastery.highest_grade %></td>
-        <td><%= mastery.chest_granted %></td>
-      </tr>
-      <% end %>
-      </tbody>
-    </table>
+  <div class="col-md-8 col-without-pad">
+    <%= react_component('AppTable', { data: @summoner_materies }) %>
   </div>
 </div>
-
-<div class="row">
-  <div class="app-card col-md-3 col-without-pad">
-    <div class="card-section card-section-centered">
-      <%= image_tag "hextech.png", size: "100x100", class: "img img-rounded" %>
-    </div>
-    <div class="card-section-full card-section-centered card-section-green">
-      <h1><%= @summoner.chests_unlocked %></h1>
-      <label>Chests Unlocked</label>
-    </div>
-  </div>
-</div>
-

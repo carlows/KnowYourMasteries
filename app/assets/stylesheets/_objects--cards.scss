@@ -1,14 +1,18 @@
 $color--background:     $white;
 
+[class*="col-"] {
+  margin: 0 $space $space-double $space;
+}
+
 .app-card {
   @include material-layer(1);
   background-color: $color--background;
 
-  margin: 0 $pad $pad $pad;
+  margin: $space-double 0;
 
   .card-section {
     width: 100%;
-    padding: $pad-double $pad;
+    padding: $pad-triple $pad;
 
     h1 {
       margin: 0;
@@ -35,6 +39,41 @@ $color--background:     $white;
 
     label {
       color: $primary-color-text;
+    }
+  }
+
+  &-table {
+    background-color: $primary-color;
+    text-align: center;
+    color: $primary-color-text;
+    padding: $pad;
+    font-size: 120%;
+
+    .btn-table {
+      color: $primary-color-text !important;
+    }
+
+    .champ-name-td {
+      span.champ-name {
+        width: 60%;
+        height: 100%;
+        display: inline-block;
+        text-align: center;
+      }
+    }
+    
+    & > thead > tr > th {
+      border: none !important;
+    }
+
+    td {
+      border: none !important;
+    }
+
+    th {
+      border: none !important;
+      text-align: center;
+      font-weight: bold;
     }
   }
 }
