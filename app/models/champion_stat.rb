@@ -9,4 +9,8 @@ class ChampionStat < ActiveRecord::Base
   def kda
     (kills + assists) / deaths.to_f
   end
+
+  def attributes
+    super.merge({'winrate' => winrate, 'kda' => kda})
+  end
 end

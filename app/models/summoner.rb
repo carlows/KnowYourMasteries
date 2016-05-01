@@ -13,6 +13,14 @@ class Summoner < ActiveRecord::Base
     champion_masteries.sum(:champion_level)
   end
 
+  def best_winrate_champion
+    champion_stats.sort_by(&:winrate).last
+  end
+
+  def best_kda_champion
+    champion_stats.sort_by(&:kda).last
+  end
+
   def mained_champion
     champion_masteries.order('champion_points DESC').first
   end
@@ -32,8 +40,8 @@ class Summoner < ActiveRecord::Base
     champion_stats_data = api.request_champion_ranked_stats_data(summoner.summoner_id, summoner.region)
 
     summoner.logo_id = summoner_data["profileIconId"]
-    summoner.champion_masteries.delete_all
-    summoner.champion_stats.delete_all
+    ChampionMastery.where(summoner_id: summoner.id).delete_all
+    ChampionStat.where(summoner_id: summoner.id).delete_all
 
     mastery_data = api.request_mastery_data(summoner.summoner_id, summoner.region)
 

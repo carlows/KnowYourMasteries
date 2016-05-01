@@ -9,7 +9,12 @@ class SummonersController < ApplicationController
 
   def show
     @summoner = Summoner.includes(:champion_masteries => :champion).find(params[:id])
-    @summoner_materies = @summoner.champion_masteries.includes(:champion).order_by_champion_points.as_json(include: :champion)
+    @summoner_masteries = @summoner.champion_masteries.includes(:champion).order_by_champion_points.as_json(include: :champion)
+
+    summoner_mastery_ids = @summoner.champion_masteries.pluck(:id)
+    summoner_stat_ids = @summoner.champion_stats.pluck(:id)
+
+    @ranked_champions = Champion.includes(:champion_masteries, :champion_stats).where(champion_masteries: {id: summoner_mastery_ids}, champion_stats: {id: summoner_stat_ids}).as_json(include: [:champion_masteries, :champion_stats])
   end
 
   def create

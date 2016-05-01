@@ -19,6 +19,10 @@ $color--background:     $white;
         font-weight: 500;
       }
     }
+
+    &-empty {
+      padding: ($pad * 7.2) $pad;
+    }
   }
 
   .card-section {
