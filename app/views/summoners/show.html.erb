@@ -4,6 +4,14 @@
 
 <div class="row">
   <div class="col-md-6">
+    <div class="app-card">
+      <%= column_chart @summoner_mastery_grades, label: 'Value' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
     <div class="app-card app-card-info row">
       <div class="card-section card-section-centered card-section-info-main col-md-5 col-without-pad">
         <h1><%= @summoner.mained_champion.champion.name %></h1>

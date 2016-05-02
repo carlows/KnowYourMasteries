@@ -10,6 +10,7 @@ class SummonersController < ApplicationController
   def show
     @summoner = Summoner.includes(:champion_masteries => :champion).find(params[:id])
     @summoner_masteries = @summoner.champion_masteries.includes(:champion).order_by_champion_points.as_json(include: :champion)
+    @summoner_mastery_grades = @summoner.champion_masteries.group_by{ |mastery| mastery.highest_grade[0] }.map { |key, value| [ key, value.count ] if key != 'n' }.compact.to_h
 
     summoner_mastery_ids = @summoner.champion_masteries.pluck(:id)
     summoner_stat_ids = @summoner.champion_stats.pluck(:id)
