@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-6">
-    <div class="app-card app-card-info row">
+    <div class="app-card app-card-info row wow fadeInLeft lapse-one">
       <div class="card-section card-section-centered card-section-info-main col-md-5 col-without-pad">
         <h1><%= @summoner.mained_champion.champion.name %></h1>
         <label>Main Champion</label>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <% unless @summoner.best_kda_champion.nil? %>
-    <div class="app-card app-card-info row">
+    <div class="app-card app-card-info row wow fadeInLeft lapse-two">
       <div class="card-section card-section-centered card-section-info-main col-md-5 col-without-pad">
         <h1><%= @summoner.best_kda_champion.champion.name %></h1>
         <label>Best KDA Champion</label>
@@ -42,13 +42,13 @@
       </div>
     </div>
   <% else %>
-    <div class="app-card app-card-info app-card-info-empty row text-center">
+    <div class="app-card app-card-info app-card-info-empty row text-center wow fadeInLeft lapse-two">
       <h3>You haven't played Ranked this season</h3>
     </div>
   <% end %>
   </div>
   <div class="col-md-6">
-    <div class="app-card">
+    <div class="app-card wow fadeInRight lapse-one">
       <div class="app-card-header">
         <h3>Mastery Grades</h3>
       </div>
@@ -61,7 +61,7 @@
 
 <div class="row">
   <div class="col-md-3">
-    <div class="app-card">
+    <div class="app-card wow fadeInLeft lapse-one">
       <div class="card-section card-section-centered">
         <%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/#{@summoner.logo_id}.png", size: "100x100", class: "img img-circle" %>
       </div>
@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <div class="app-card">
+    <div class="app-card wow fadeInLeft lapse-two">
       <div class="card-section card-section-centered">
         <%= image_tag "hextech.png", size: "100x100", class: "img img-rounded" %>
       </div>

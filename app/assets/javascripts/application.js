@@ -18,5 +18,6 @@
 //= require react
 //= require react_ujs
 //= require lodash
+//= require wowjs
 //= require components
 //= require_tree .

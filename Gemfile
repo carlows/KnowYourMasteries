@@ -20,6 +20,7 @@ gem 'chartkick'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-material-design'
+  gem 'rails-assets-wowjs'
 end
 
 group :development do

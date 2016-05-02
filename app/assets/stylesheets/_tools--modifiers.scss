@@ -5,3 +5,31 @@
 .fade-in {
   @include fade-in;
 }
+
+.lapse-one {
+  @include lapse-delay(.4s);
+}
+
+.lapse-two {
+  @include lapse-delay(.8s);
+}
+
+.lapse-three {
+  @include lapse-delay(0.8s);
+}
+
+.lapse-four {
+  @include lapse-delay(1.2s);
+}
+
+.lapse-five {
+  @include lapse-delay(2s);
+}
+
+.lapse-six {
+  @include lapse-delay(2.4s);
+}
+
+.lapse-seven {
+  @include lapse-delay(2.8s);
+}

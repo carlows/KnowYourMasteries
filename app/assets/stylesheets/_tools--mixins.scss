@@ -29,3 +29,7 @@
     box-shadow: bottom-shadow($depth), top-shadow($depth);
   }
 }
+
+@mixin lapse-delay($time) {
+  animation-delay: $time;
+}

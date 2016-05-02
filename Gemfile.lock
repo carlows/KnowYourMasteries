@@ -156,6 +156,7 @@ GEM
     rails-assets-bootstrap-sass (3.3.6)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.1.4)
+    rails-assets-wowjs (1.1.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -278,6 +279,7 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.2.5.1)
   rails-assets-bootstrap-material-design!
+  rails-assets-wowjs!
   rails_12factor
   rails_serve_static_assets
   rails_stdout_logging
