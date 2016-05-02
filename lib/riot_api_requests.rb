@@ -38,7 +38,7 @@ class RiotApiRequests
   # https://lan.api.pvp.net/api/lol/lan/v1.4/summoner/by-name/summoner_name?api_key="
   def request_summoner_data(summoner_name, region)
     api_request_summonerid_url = get_region_url(region) + "summoner/by-name/"
-    full_url = api_request_summonerid_url + summoner_name + @api_key
+    full_url = api_request_summonerid_url + url_encode_summoner_name(summoner_name) + @api_key
     RestClient.get(full_url, &@handle_response) 
   end
 
@@ -84,5 +84,9 @@ class RiotApiRequests
     }
 
     "https://#{region.downcase}.api.pvp.net/championmastery/location/#{region_location[region]}/"
+  end
+
+  def url_encode_summoner_name(summoner_name)
+    ERB::Util.url_encode(summoner_name).to_s
   end
 end
