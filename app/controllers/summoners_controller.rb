@@ -8,9 +8,19 @@ class SummonersController < ApplicationController
   end
 
   def show
+    alphabet = 'SABCDEFGHIJKLMOPQRTUVWXYZNn'
+
+    custom_sort = ->(a, b) do
+      a.split('').each_with_index do |char, i|
+        return alphabet.index(a[i]) <=> alphabet.index(b[i]) if a[i] != b[i]
+      end
+
+      return alphabet.index(' ') <=> alphabet.index(b[-1])
+    end
+
     @summoner = Summoner.includes(:champion_masteries => :champion).find(params[:id])
     @summoner_masteries = @summoner.champion_masteries.includes(:champion).order_by_champion_points.as_json(include: :champion)
-    @summoner_mastery_grades = @summoner.champion_masteries.group_by{ |mastery| mastery.highest_grade[0] }.map { |key, value| [ key, value.count ] if key != 'n' }.compact.to_h
+    @summoner_mastery_grades = @summoner.champion_masteries.group_by{ |mastery| mastery.highest_grade[0] }.map { |key, value| [ key, value.count ] if key != 'n' }.compact.sort(&custom_sort).to_h
 
     summoner_mastery_ids = @summoner.champion_masteries.pluck(:id)
     summoner_stat_ids = @summoner.champion_stats.pluck(:id)

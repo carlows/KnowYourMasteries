@@ -4,14 +4,6 @@
 
 <div class="row">
   <div class="col-md-6">
-    <div class="app-card">
-      <%= column_chart @summoner_mastery_grades, label: 'Value' %>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
     <div class="app-card app-card-info row">
       <div class="card-section card-section-centered card-section-info-main col-md-5 col-without-pad">
         <h1><%= @summoner.mained_champion.champion.name %></h1>
@@ -30,9 +22,7 @@
         <p>Ranked Stats Season 6</p>
       </div>
     </div>
-  </div>
-  <% unless @summoner.best_kda_champion.nil? %>
-  <div class="col-md-6">
+    <% unless @summoner.best_kda_champion.nil? %>
     <div class="app-card app-card-info row">
       <div class="card-section card-section-centered card-section-info-main col-md-5 col-without-pad">
         <h1><%= @summoner.best_kda_champion.champion.name %></h1>
@@ -51,14 +41,22 @@
         <p>Ranked Stats Season 6</p>
       </div>
     </div>
-  </div>
   <% else %>
-  <div class="col-md-6">
     <div class="app-card app-card-info app-card-info-empty row text-center">
       <h3>You haven't played Ranked this season</h3>
     </div>
-  </div>
   <% end %>
+  </div>
+  <div class="col-md-6">
+    <div class="app-card">
+      <div class="app-card-header">
+        <h3>Mastery Grades</h3>
+      </div>
+      <div class="app-card-chart">
+        <%= column_chart @summoner_mastery_grades, label: 'Grades', xtitle: 'Grade', colors: ['#009688'], library: { vAxis: { format: '0' } } %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row">
