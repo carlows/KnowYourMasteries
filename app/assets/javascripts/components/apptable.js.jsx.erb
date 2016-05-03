@@ -4,8 +4,7 @@ class AppTable extends React.Component {
 
     this.state = {
       data: [],
-      amount: 0,
-      count: 0
+      currentBtnState: false
     }
 
     this.calculateHighestScore = this.calculateHighestScore.bind(this);
@@ -13,33 +12,28 @@ class AppTable extends React.Component {
 
   componentWillMount() {
     let data = this.props.data;
-    let initialAmount = 5;
+    let initialAmount = 8;
     let startingItems = _.take(data, initialAmount);
     this.setState({
-      data: startingItems,
-      amount: data.length,
-      count: initialAmount
+      data: startingItems
     })
   }
 
-  showMore() {
-    let { amount, count } = this.state;
+  toggleBtnState() {
+    let currentBtnState = this.state.currentBtnState;
+    let data = this.props.data;
 
-    let amountToDisplay = count + 5;
+    let itemsToDisplay;
+    let nextBtnState = !currentBtnState;
+    if(nextBtnState)
+      itemsToDisplay = this.props.data;
+    else
+      itemsToDisplay = _.take(this.props.data, 8);
 
-    if(amountToDisplay <= amount) {
-      let itemsToDisplay = _.take(this.props.data, amountToDisplay);
-
-      this.setState({
-        data: itemsToDisplay,
-        count: amountToDisplay 
-      });
-    } else {
-      this.setState({
-        data: this.props.data,
-        count: this.props.data.length
-      });
-    }
+    this.setState({
+      data: itemsToDisplay,
+      currentBtnState: nextBtnState
+    });
   }
 
   calculateHighestScore(score) {
@@ -64,6 +58,8 @@ class AppTable extends React.Component {
         </tr>
       )
     });
+    
+    let btnState = this.state.currentBtnState ? "Hide items" : "Show all";
 
     return (
       <div className="app-card app-card-table wow fadeInRight lapse-one">
@@ -81,7 +77,7 @@ class AppTable extends React.Component {
           </tbody>
         </table>
 
-        <button className="btn btn-success btn-table" onClick={this.showMore.bind(this)}>Show more</button>
+        <button className="btn btn-success btn-table" onClick={this.toggleBtnState.bind(this)}>{btnState}</button>
       </div>
     );
   }
