@@ -5,7 +5,7 @@ class SummonersController < ApplicationController
   end
 
   def index
-    @summoners = Summoner.all
+    @summoners = Summoner.all.paginate(:page => params[:page], per_page: 30)
   end
 
   def show
