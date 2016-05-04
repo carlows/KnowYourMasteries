@@ -45,6 +45,8 @@ class Summoner < ActiveRecord::Base
 
     mastery_data = api.request_mastery_data(summoner.summoner_id, summoner.region)
 
+    summoner.main_champion_id = find_main_champion(mastery_data)
+
     summoner.save(:validate => false)
 
     store_data(mastery_data, champion_stats_data, summoner)
@@ -64,6 +66,9 @@ class Summoner < ActiveRecord::Base
 
     mastery_data = api.request_mastery_data(summoner.summoner_id, region)
     champion_stats_data = api.request_champion_ranked_stats_data(summoner.summoner_id, region)
+
+    summoner.main_champion_id = find_main_champion(mastery_data)
+
     summoner.save(:validate => false)
 
     store_data(mastery_data, champion_stats_data, summoner)
@@ -72,6 +77,14 @@ class Summoner < ActiveRecord::Base
   end
 
   private
+
+  def self.find_main_champion(mastery_data)
+    max = mastery_data.max_by do |mastery|
+      mastery["championPoints"]
+    end
+
+    max["championId"]
+  end
 
   def self.store_data(mastery_data, champion_stats_data, summoner)
     masteries = []

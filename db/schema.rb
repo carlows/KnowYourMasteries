@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429014348) do
+ActiveRecord::Schema.define(version: 20160504110028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,9 +58,10 @@ ActiveRecord::Schema.define(version: 20160429014348) do
     t.string   "name"
     t.integer  "summoner_id"
     t.integer  "logo_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "region"
+    t.integer  "main_champion_id"
   end
 
   add_index "summoners", ["name"], name: "index_summoners_on_name", using: :btree
