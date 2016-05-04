@@ -84,7 +84,8 @@ $color--background:     $white;
     }
 
     .champ-name-td {
-      span.champ-name {
+      span.champ-name,
+      span.summ-name {
         width: 60%;
         height: 100%;
         display: inline-block;

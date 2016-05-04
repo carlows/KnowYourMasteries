@@ -1,0 +1,32 @@
+<% content_for :header do %>
+  <h1>Summoners</h1>
+<% end %>
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="app-card app-card-table wow fadeInRight lapse-one">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Summoner</th>
+              <th>Main Champion</th>
+              <th>Champion Score</th>
+              <th>Ranked Winrate</th>
+              <th># Chests</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @summoners.each do |summoner| %>
+            <tr>
+              <td class="text-left champ-name-td"><%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/#{summoner.logo_id}.png", size: "30x30", class: "img img-rounded" %><span class="summ-name"><%= summoner.name %></span></td>
+              <td class="text-left champ-name-td"><%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/#{summoner.mained_champion.champion.key}.png", size: "30x30", class: "img img-rounded" %><span class="champ-name"><%= summoner.mained_champion.champion.name %></span></td>
+              <td class="champ-name-td"><span class="champ-name"><%= summoner.mained_champion.champion_points %></span></td>
+              <td class="champ-name-td"><span class="champ-name"><%= "#{summoner.mained_champion_stats.winrate}%" unless summoner.mained_champion_stats.nil? %></span></td>
+              <td class="champ-name-td"><span class="champ-name"><%= summoner.chests_unlocked %></span></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

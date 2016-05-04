@@ -110,7 +110,7 @@ class Summoner < ActiveRecord::Base
     champion_stats_query = "INSERT INTO champion_stats (matches_played, matches_won, matches_lost, kills, assists, deaths, champion_id, summoner_id, created_at, updated_at) VALUES #{champions.join(", ")};"
 
     ActiveRecord::Base.transaction do
-      ChampionMastery.connection.execute champion_masteries_query
+      ChampionMastery.connection.execute champion_masteries_query unless mastery_data.nil?
       ChampionStat.connection.execute champion_stats_query unless champion_stats_data.nil?
     end
   end

@@ -5,6 +5,7 @@ class SummonersController < ApplicationController
   end
 
   def index
+    @summoners = Summoner.all
   end
 
   def show
