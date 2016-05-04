@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427075214) do
+ActiveRecord::Schema.define(version: 20160429014348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160427075214) do
     t.string   "highest_grade"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "champion_level"
   end
 
   add_index "champion_masteries", ["champion_id"], name: "index_champion_masteries_on_champion_id", using: :btree

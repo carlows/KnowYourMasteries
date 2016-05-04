@@ -1,0 +1,15 @@
+.application {
+  height: 100%;
+
+  &-content {
+    min-height: 60%;
+    margin-bottom: -50px;
+    padding: $pad-double 0;
+  }
+
+  &-content:after {
+    content: "";
+    display: block;
+    height: 50px;
+  }
+}

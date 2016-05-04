@@ -1,0 +1,34 @@
+$color--background:               $primary-color;
+$color--background-dark:          $primary-color-dark;
+$color--font:                     $primary-color-text;
+$size--header-text:               160%;
+$size--footer-height:             50px;
+
+.application-footer {
+  @include material-layer(2);
+  background-color: $color--background-dark;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  h2 {
+    color: $color--font;
+    font-weight: bold;
+    margin: 0;
+    font-size: $size--header-text;
+  }
+
+  p {
+    color: $color--font;
+    font-size: 120%;
+    margin: 0;
+
+    .material-icons {
+      position: relative;
+      top: 2px;
+    }
+  }
+}
