@@ -17,6 +17,7 @@ gem 'airbrake', '4.1.0'
 gem 'rest-client'
 gem 'lodash-rails'
 gem 'chartkick'
+gem 'will_paginate'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-material-design'

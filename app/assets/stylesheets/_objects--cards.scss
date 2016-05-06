@@ -84,7 +84,11 @@ $color--background:     $white;
     }
 
     .champ-name-td {
-      span.champ-name {
+      a {
+        color: $primary-color-text;
+      }
+      span.champ-name,
+      span.summ-name {
         width: 60%;
         height: 100%;
         display: inline-block;
@@ -105,5 +109,15 @@ $color--background:     $white;
       text-align: center;
       font-weight: bold;
     }
+  }
+}
+
+.card-section-champs-full {
+  width: 100%;
+  padding: $pad;
+
+  .champ {
+    display: inline-block;
+    margin: $space-quarter;
   }
 }
