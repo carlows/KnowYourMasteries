@@ -26,9 +26,9 @@ class ChampionPointsAndWinrateComparison extends React.Component {
     let itemsToDisplay;
     let nextBtnState = !currentBtnState;
     if(nextBtnState)
-      itemsToDisplay = this.props.data;
+      itemsToDisplay = data;
     else
-      itemsToDisplay = _.take(this.props.data, 8);
+      itemsToDisplay = _.take(data, 8);
 
     this.setState({
       data: itemsToDisplay,
