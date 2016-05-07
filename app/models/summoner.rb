@@ -3,6 +3,7 @@ require 'riot_api_requests'
 class Summoner < ActiveRecord::Base
   has_many :champion_masteries
   has_many :champion_stats
+  belongs_to :champion
 
   validates :name, presence: true
   validates :summoner_id, presence: true
@@ -45,7 +46,7 @@ class Summoner < ActiveRecord::Base
 
     mastery_data = api.request_mastery_data(summoner.summoner_id, summoner.region)
 
-    summoner.main_champion_id = find_main_champion(mastery_data) unless mastery_data.empty?
+    summoner.champion_id = find_main_champion(mastery_data) unless mastery_data.empty?
 
     if mastery_data.empty? || mastery_data.nil?
       raise SummonerHasNoMasteryException
@@ -73,7 +74,7 @@ class Summoner < ActiveRecord::Base
     mastery_data = api.request_mastery_data(summoner.summoner_id, region)
     champion_stats_data = api.request_champion_ranked_stats_data(summoner.summoner_id, region)
 
-    summoner.main_champion_id = find_main_champion(mastery_data) unless mastery_data.empty?
+    summoner.champion_id = find_main_champion(mastery_data) unless mastery_data.empty?
 
     if mastery_data.empty? || mastery_data.nil?
       raise SummonerHasNoMasteryException

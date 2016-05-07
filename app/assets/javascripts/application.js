@@ -19,5 +19,7 @@
 //= require react_ujs
 //= require lodash
 //= require wowjs
+//= require highcharts
+//= require chartkick
 //= require components
 //= require_tree .

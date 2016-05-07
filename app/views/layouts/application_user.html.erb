@@ -3,7 +3,6 @@
 <head>
   <title>LeagueTeam</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -27,7 +26,7 @@
           <ul class="nav navbar-nav">
             <li><%= link_to 'SEARCH', search_path %></li>
             <li><%= link_to 'LEADERBOARD', summoners_path %></li>
-            <li><a href="#">STATS</a></li>
+            <li><%= link_to 'GLOBAL STATS', stats_path %></li>
           </ul>
         </div>
       </div>
