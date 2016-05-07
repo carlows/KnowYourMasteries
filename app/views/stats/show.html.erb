@@ -16,6 +16,19 @@
 </div>
 
 <div class="row">
+  <div class="col-md-12">
+    <div class="app-card wow fadeInRight lapse-one">
+      <div class="app-card-header">
+        <h3>Winrate/Points Comparison</h3>
+      </div>
+      <div class="app-card-chart">
+        <%= scatter_chart @champion_comparison %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-3">
     <div class="app-card wow fadeInLeft lapse-one">
       <div class="card-section card-section-centered">
@@ -26,5 +39,8 @@
         <label>Chests Unlocked</label>
       </div>
     </div>
+  </div>
+  <div class="col-md-9">
+    <%= react_component('ChampionPointsAndWinrateComparison', { data: @champions_data }) %>
   </div>
 </div>

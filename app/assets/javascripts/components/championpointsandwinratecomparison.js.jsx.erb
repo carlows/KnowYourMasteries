@@ -1,0 +1,77 @@
+class ChampionPointsAndWinrateComparison extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      currentBtnState: false
+    }
+  }
+
+  componentWillMount() {
+    let sortedData = _.orderBy(this.props.data, 'mastery_points_average', 'desc');
+    let data = sortedData;
+    let initialAmount = 8;
+    let startingItems = _.take(data, initialAmount);
+    this.setState({
+      data: startingItems
+    })
+  }
+
+  toggleBtnState() {
+    let currentBtnState = this.state.currentBtnState;
+    let sortedData = _.orderBy(this.props.data, 'mastery_points_average', 'desc');
+    let data = sortedData;
+
+    let itemsToDisplay;
+    let nextBtnState = !currentBtnState;
+    if(nextBtnState)
+      itemsToDisplay = this.props.data;
+    else
+      itemsToDisplay = _.take(this.props.data, 8);
+
+    this.setState({
+      data: itemsToDisplay,
+      currentBtnState: nextBtnState
+    });
+  }
+
+  render() {
+    let sortedData = _.orderBy(this.state.data, 'mastery_points_average', 'desc');
+    let dataRows = sortedData.map((item, index) => {
+
+      return (
+        <tr key={index}>
+          <td className="text-left champ-name-td col-md-3"><img src={ "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/" + item.key + ".png" } width="30" height="30" /> <span className="champ-name">{ item.name }</span></td>
+          <td className="champ-name-td col-md-3"><span className="champ-name">{ item.mastery_points_average }</span></td>
+          <td className="champ-name-td col-md-2"><span className="champ-name">{item.winrate_average }%</span></td>
+        </tr>
+      )
+    });
+
+    let btnState = this.state.currentBtnState ? "Hide items" : "Show all";
+
+    return (
+      <div className="app-card app-card-table app-card-table-green wow fadeInRight lapse-two">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Champion</th>
+              <th>Avg. Mastery Points</th>
+              <th>Avg. Winrate</th>
+            </tr>
+          </thead>
+          <tbody>
+            { dataRows }
+          </tbody>
+        </table>
+
+        <button className="btn btn-success btn-table" onClick={this.toggleBtnState.bind(this)}>{btnState}</button>
+      </div>
+    );
+  }
+}
+
+ChampionPointsAndWinrateComparison.propTypes = {
+  data: React.PropTypes.array.isRequired
+};
