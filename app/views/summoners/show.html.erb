@@ -2,6 +2,7 @@
   <h1><%= @summoner.name %></h1>
 <% end %>
 
+<% unless @summoner.champion_masteries.empty? %>
 <div class="row">
   <div class="col-md-6">
     <div class="app-card app-card-info row wow fadeInLeft lapse-one">
@@ -87,3 +88,12 @@
     <%= react_component('RankedTableComparison', { data: @ranked_champions }) %>
   </div>
 </div>
+<% else %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="app-card app-card-error row wow fadeInUp lapse-one text-center">
+      <h2>This summoner has no mastery data <%= image_tag 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/item/3151.png', size: '30x30' %></h2>
+    </div>
+  </div>
+</div>
+<% end %>

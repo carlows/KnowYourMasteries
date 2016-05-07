@@ -32,6 +32,10 @@ $color--background:     $white;
     }
   }
 
+  &-error {
+    padding: $pad-double; 
+  }
+
   .card-section {
     padding: $pad-triple $pad;
 
