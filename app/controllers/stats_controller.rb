@@ -3,5 +3,6 @@ class StatsController < ApplicationController
 
   def show
     @champion_mains = Champion.joins(:summoners).group('key').count
+    @chests_unlocked = ChampionMastery.where(chest_granted: true).count
   end
 end
