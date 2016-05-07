@@ -6,7 +6,7 @@ class SummonersController < ApplicationController
 
   def index
     if params.has_key?(:champion)
-      summoners = Summoner.where(main_champion_id: params[:champion])
+      summoners = Summoner.where(champion_id: params[:champion])
     else
       summoners = Summoner.all
     end
