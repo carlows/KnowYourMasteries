@@ -47,6 +47,12 @@ class Summoner < ActiveRecord::Base
 
     summoner.main_champion_id = find_main_champion(mastery_data) unless mastery_data.empty?
 
+    if mastery_data.empty? || mastery_data.nil?
+      raise SummonerHasNoMasteryException
+      return
+    end
+    
+
     summoner.save(:validate => false)
 
     store_data(mastery_data, champion_stats_data, summoner)
@@ -68,6 +74,11 @@ class Summoner < ActiveRecord::Base
     champion_stats_data = api.request_champion_ranked_stats_data(summoner.summoner_id, region)
 
     summoner.main_champion_id = find_main_champion(mastery_data) unless mastery_data.empty?
+
+    if mastery_data.empty? || mastery_data.nil?
+      raise SummonerHasNoMasteryException
+      return
+    end
 
     summoner.save(:validate => false)
 
@@ -126,4 +137,7 @@ class Summoner < ActiveRecord::Base
       ChampionStat.connection.execute champion_stats_query unless champion_stats_data.nil?
     end
   end
+end
+
+class SummonerHasNoMasteryException < StandardError
 end

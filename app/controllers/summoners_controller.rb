@@ -39,8 +39,18 @@ class SummonersController < ApplicationController
   def create
     summoner = Summoner.where('lower(name) = ? AND region = ?', params[:summoner].downcase, params[:region]).first
     if summoner
-      sum = Summoner.update_summoner(summoner)
-      redirect_to summoner_path(sum.id)
+      begin
+        sum = Summoner.update_summoner(summoner)
+        redirect_to summoner_path(sum.id)
+      rescue RiotApi::SummonerNotFoundException
+        redirect_to summoner_not_found_path
+      rescue RiotApi::RateLimitExceededException
+        redirect_to apierror_path
+      rescue RiotApi::RiotServerErrorException
+        redirect_to apierror_path
+      rescue SummonerHasNoMasteryException
+        redirect_to summoner_not_found_path
+      end  
     else
       begin
         sum = Summoner.create_summoner(params[:summoner], params[:region])
@@ -51,6 +61,8 @@ class SummonersController < ApplicationController
         redirect_to apierror_path
       rescue RiotApi::RiotServerErrorException
         redirect_to apierror_path
+      rescue SummonerHasNoMasteryException
+        redirect_to summoner_not_found_path
       end
     end
   end

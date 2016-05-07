@@ -7,4 +7,7 @@ module RiotApi
 
   class RiotServerErrorException < StandardError
   end
+
+  class SummonerHasNoMasteryException < StandardError
+  end
 end
