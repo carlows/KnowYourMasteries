@@ -45,7 +45,7 @@ class Summoner < ActiveRecord::Base
 
     mastery_data = api.request_mastery_data(summoner.summoner_id, summoner.region)
 
-    summoner.main_champion_id = find_main_champion(mastery_data)
+    summoner.main_champion_id = find_main_champion(mastery_data) unless mastery_data.empty?
 
     summoner.save(:validate => false)
 
@@ -67,7 +67,7 @@ class Summoner < ActiveRecord::Base
     mastery_data = api.request_mastery_data(summoner.summoner_id, region)
     champion_stats_data = api.request_champion_ranked_stats_data(summoner.summoner_id, region)
 
-    summoner.main_champion_id = find_main_champion(mastery_data)
+    summoner.main_champion_id = find_main_champion(mastery_data) unless mastery_data.empty?
 
     summoner.save(:validate => false)
 
@@ -82,7 +82,6 @@ class Summoner < ActiveRecord::Base
     max = mastery_data.max_by do |mastery|
       mastery["championPoints"]
     end
-
     max["championId"]
   end
 
