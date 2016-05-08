@@ -16,6 +16,12 @@ $(function(){
         });
     });
 
+    $('.search-select').selectpicker({
+      style: 'btn-primary btn-raised',
+      size: 4
+    });
+
+
     var data = $('#scatter-global-chart').data('chartdata');
     $('#scatter-global-chart').highcharts({
         chart: {

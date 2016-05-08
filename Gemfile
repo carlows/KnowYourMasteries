@@ -23,6 +23,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-material-design'
   gem 'rails-assets-wowjs'
   gem 'rails-assets-highcharts'
+  gem 'rails-assets-bootstrap-select'
 end
 
 group :development do

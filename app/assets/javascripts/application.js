@@ -21,5 +21,6 @@
 //= require wowjs
 //= require highcharts
 //= require chartkick
+//= require bootstrap-select
 //= require components
 //= require_tree .
