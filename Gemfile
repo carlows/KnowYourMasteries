@@ -22,6 +22,7 @@ gem 'will_paginate'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-material-design'
   gem 'rails-assets-wowjs'
+  gem 'rails-assets-highcharts'
 end
 
 group :development do
