@@ -3,13 +3,81 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-6">
-    <div class="app-card wow fadeInRight lapse-one">
-      <div class="app-card-header">
-        <h3>Mains by Champion</h3>
+  <div class="col-md-3">
+    <div class="app-card">
+      <div class="card-section card-section-centered">
+        <%= image_tag "hextech.png", size: "100x100", class: "img img-rounded" %>
       </div>
-      <div class="app-card-chart">
-        <%= pie_chart @champion_mains, library: { pieSliceText: 'label' } %>
+      <div class="card-section-full card-section-centered card-section-green">
+        <h1 class='count'><%= @chests_unlocked %></h1>
+        <label>Chests Unlocked</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="app-card">
+      <div class="card-section card-section-centered">
+        <%= image_tag "challenger.png", size: "100x100", class: "img img-rounded" %>
+      </div>
+      <div class="card-section-full card-section-centered card-section-green">
+        <h1 class='count'><%= @total_excellent_grades %></h1>
+        <label>'S' Scores</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="app-card">
+      <div class="card-section card-section-centered">
+        <%= image_tag "challenger.png", size: "100x100", class: "img img-rounded" %>
+      </div>
+      <div class="card-section-full card-section-centered card-section-green">
+        <h1 class='count'><%= @total_full_masteries %></h1>
+        <label>Champion Mastery LVL 5</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="app-card">
+      <div class="card-section card-section-centered">
+        <%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Fiora.png", size: "100x100", class: "img img-rounded" %>
+      </div>
+      <div class="card-section-full card-section-centered card-section-green">
+        <h1 class='count'><%= @total_summoners %></h1>
+        <label>Total Summoners Searched</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="app-card">
+      <div class="card-section card-section-centered">
+        <%= image_tag "mastery5.png", size: "125x100", class: "img img-rounded" %>
+      </div>
+      <div class="card-section-full card-section-centered card-section-green">
+        <h1 class='count'><%= @total_mastery_points %></h1>
+        <label>Total Mastery Points</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="app-card">
+      <div class="card-section card-section-centered">
+        <%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Fiora.png", size: "100x100", class: "img img-rounded" %>
+      </div>
+      <div class="card-section-full card-section-centered card-section-green">
+        <h1 class='count'><%= @total_matches_played %></h1>
+        <label>Total Ranked Matches</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="app-card">
+      <div class="card-section card-section-centered">
+        <%= image_tag "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/#{@highest_mastery.champion.key}.png", size: "100x100", class: "img img-rounded" %>
+      </div>
+      <div class="card-section-full card-section-centered card-section-green card-section-insane">
+        <h1 class='count'><%= @highest_mastery.champion_points %></h1>
+        <h3><%= @highest_mastery.summoner.name %></h3>
+        <label>Most Insane Mastery</label>
       </div>
     </div>
   </div>
@@ -30,18 +98,18 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-6">
     <div class="app-card wow fadeInLeft lapse-one">
-      <div class="card-section card-section-centered">
-        <%= image_tag "hextech.png", size: "100x100", class: "img img-rounded" %>
+      <div class="app-card-header">
+        <h3>Mains by Champion</h3>
       </div>
-      <div class="card-section-full card-section-centered card-section-green">
-        <h1><%= @chests_unlocked %></h1>
-        <label>Chests Unlocked</label>
+      <div class="app-card-chart">
+        <%= pie_chart @champion_mains, library: { pieSliceText: 'label' } %>
       </div>
     </div>
   </div>
-  <div class="col-md-9">
+
+  <div class="col-md-6">
     <%= react_component('ChampionPointsAndWinrateComparison', { data: @champions_data }) %>
   </div>
 </div>

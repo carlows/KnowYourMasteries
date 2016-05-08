@@ -4,11 +4,25 @@ $(function(){
     new WOW().init();
     $('#chart-1').css({ 'line-height': '1' });
 
+    $('.count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 4000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+
     var data = $('#scatter-global-chart').data('chartdata');
-    console.log(data);
     $('#scatter-global-chart').highcharts({
         chart: {
             type: 'scatter'
+        },
+        title: {
+          text: 'Champion Comparison'
         },
         legend: { enabled: false },
         xAxis: {

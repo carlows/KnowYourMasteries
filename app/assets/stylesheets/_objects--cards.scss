@@ -60,6 +60,17 @@ $color--background:     $white;
     &-info-main {
       padding-top: 70px;
     }
+
+    &-insane {
+      h1 {
+        font-size: 300% !important;
+      }
+      h3 {
+        margin: 0;
+        margin-bottom: $space;
+        font-size: 160%;
+      }
+    }
   }
 
   .card-section-full {
