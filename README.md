@@ -14,7 +14,7 @@ The application stores the data for a player that has been searched, that way we
 
 - Ruby and Ruby on Rails for the backend
 - Bootstrap, ReactJS, JQuery and SASS for the frontend
-- HighCharts with KickCharts for charting
+- HighCharts with ChartKick for charting
 - PostgreSQL to store the data
 - Heroku to host the demo
 - Lots of automated patience because of the daily 4 hours blackouts in Venezuela (and a lot of swears)
