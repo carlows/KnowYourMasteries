@@ -104,12 +104,19 @@
         <h3>Mains by Champion</h3>
       </div>
       <div class="app-card-chart">
-        <%= pie_chart @champion_mains, library: { pieSliceText: 'label' } %>
+        <%= pie_chart @champion_mains, library: { title: { text: '# of Players who main each Champion' }, pieSliceText: 'label' } %>
       </div>
     </div>
   </div>
 
   <div class="col-md-6">
-    <%= react_component('ChampionPointsAndWinrateComparison', { data: @champions_data }) %>
+    <div class="app-card wow fadeInRight lapse-one">
+      <div class="app-card-header">
+        <h3>Mastery Grades</h3>
+      </div>
+      <div class="app-card-chart">
+        <%= column_chart @mastery_grades, label: 'Grades', xtitle: 'Grade', colors: ['#009688'], library: { title: { text: 'Mastery Grades Aggregated Stats' } } %>
+      </div>
+    </div>
   </div>
 </div>
