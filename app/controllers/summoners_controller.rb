@@ -7,11 +7,12 @@ class SummonersController < ApplicationController
   def index
     if params.has_key?(:champion)
       summoners = Summoner.where(champion_id: params[:champion])
-    else
-      summoners = Summoner.all
-    end
 
-    @summoners = summoners.includes(:champion_masteries => :champion, :champion_stats => :champion).order('champion_masteries.champion_points DESC').paginate(:page => params[:page], per_page: 30)
+      @summoners = summoners.includes(:champion_masteries => :champion).order('champion_masteries.champion_points DESC')
+    else
+      @summoners = Summoner.includes(:champion_masteries => :champion).order('champion_masteries.champion_points DESC')
+    end
+    
     @champions = Champion.all
   end
 
